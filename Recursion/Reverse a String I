@@ -1,0 +1,22 @@
+class Solution {
+    public ArrayList<Character> reverseString(ArrayList<Character> s) {
+        //your code goes here
+        int a=0;
+        int d=s.size()-1;
+      return recreverseString(s,a,d);
+        
+    }
+
+    public ArrayList<Character> recreverseString(ArrayList<Character> s,int a,int d){
+     if(a>d){
+        return s;
+     }
+
+     char temp;
+     temp=s.get(a);
+     s.set(a,s.get(d));
+     s.set(d,temp);
+
+     return recreverseString(s,a+1,d-1);
+    }
+}
