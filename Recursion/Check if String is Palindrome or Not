@@ -1,0 +1,22 @@
+class Solution {   
+
+    public boolean palindromeCheck(String s) {
+        //your code goes here
+        int left=0;
+        int right=s.length()-1;
+        return recPalin(s,left,right);
+    }
+
+    public boolean recPalin(String s,int left,int right){
+        
+       if(left>right){
+        return true;
+       }
+        
+        if(s.charAt(left)!=s.charAt(right)){
+        return false;
+       }
+      return recPalin(s,left+1,right-1);
+      
+    }
+}
