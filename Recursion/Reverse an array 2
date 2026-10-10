@@ -1,0 +1,25 @@
+class Solution {
+    public int[] reverseArray(int[] nums) {
+        //your code goes here
+        int first=0;
+        int last=nums.length-1;
+
+        return recreverseArray(nums,first,last);
+
+
+    }
+
+    public int[] recreverseArray(int[] nums,int first,int last)
+    {
+        if(first<=last){
+        int temp;
+        temp=nums[first];
+        nums[first]=nums[last];
+        nums[last]=temp;
+        }
+        else{
+            return nums;
+        }
+        return recreverseArray(nums,first+1,last-1);
+    }
+}
