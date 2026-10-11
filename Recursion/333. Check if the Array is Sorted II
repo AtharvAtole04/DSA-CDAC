@@ -1,0 +1,27 @@
+class Solution {
+    public boolean isSorted(ArrayList<Integer> nums) {
+        //your code goes here
+        int first=0;
+        int second=first+1;
+
+        return recIsSorted(nums,first,second);
+    }
+
+    public boolean recIsSorted(ArrayList<Integer> nums,int first,int second){
+        
+        if(first==nums.size()-1){
+            return true;
+        }
+
+        if(nums.get(first)>nums.get(second)){
+            return false;
+        }
+        
+        if(second==nums.size()-1){
+            return true;
+        }
+        
+        return recIsSorted(nums,first+1,second+1);
+        
+    }
+}
