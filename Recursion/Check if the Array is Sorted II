@@ -7,6 +7,8 @@ class Solution {
         return recIsSorted(nums,first,second);
     }
 
+
+
     public boolean recIsSorted(ArrayList<Integer> nums,int first,int second){
         
         if(first==nums.size()-1){
