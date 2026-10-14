@@ -1,0 +1,15 @@
+class Solution {
+    public int getLength(ListNode head) {
+        // Your code goes here
+        int cnt=0;
+
+        ListNode iter=head;
+        while(iter!=null){
+            cnt++;
+            iter=iter.next;
+        }
+
+        return cnt;
+
+    }
+}
