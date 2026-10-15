@@ -1,0 +1,18 @@
+public Node reverse(){
+  Node prev=null;
+  Node curr=head;
+  return recReverse(prev,curr);
+  }
+
+public Node recReverse(Node prev,Node curr){
+  if(curr==null){
+    head=prev;
+    return head;
+    }
+  Node next=curr.next;
+  curr.next=prev;
+  prev=curr;
+  curr=next;
+
+  return recReverse(prev,curr);
+  }
