@@ -1,13 +1,14 @@
 public Node reverse(){
-  Node curr=head;
-  Node prev=null;
+ Node prev=null;  
+ Node curr=head;
 
   while(curr!=null)
 {
     Node next=curr.next;
+    curr.next=prev;
     prev=curr;
     curr=next;
  }
   head=prev;
-
+  return head;
   }
