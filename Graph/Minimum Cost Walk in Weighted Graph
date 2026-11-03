@@ -1,0 +1,65 @@
+
+class Solution {
+    public int[] minimumCost(int n, int[][] edges, int[][] query) {
+
+        int[] parent = new int[n];
+        int[] size = new int[n];
+
+        for (int i = 0; i < n; i++) {
+            parent[i] = i;
+            size[i] = 1;
+        }
+
+        for (int[] edge : edges) {
+            union(edge[0], edge[1], parent, size);
+        }
+
+        int[] cost = new int[n];
+        java.util.Arrays.fill(cost, -1);
+
+        for (int[] edge : edges) {
+            int root = find(edge[0], parent);
+            cost[root] &= edge[2];
+        }
+
+        int[] ans = new int[query.length];
+
+        for (int i = 0; i < query.length; i++) {
+            int u = query[i][0];
+            int v = query[i][1];
+
+            int rootU = find(u, parent);
+            int rootV = find(v, parent);
+
+            if (rootU != rootV) {
+                ans[i] = -1;
+            } else {
+                ans[i] = cost[rootU];
+            }
+        }
+
+        return ans;
+    }
+
+    private int find(int x, int[] parent) {
+        if (parent[x] != x) {
+            parent[x] = find(parent[x], parent);
+        }
+        return parent[x];
+    }
+
+    private void union(int u, int v, int[] parent, int[] size) {
+        int rootU = find(u, parent);
+        int rootV = find(v, parent);
+
+        if (rootU == rootV) return;
+
+        if (size[rootU] < size[rootV]) {
+            parent[rootU] = rootV;
+            size[rootV] += size[rootU];
+        } else {
+            parent[rootV] = rootU;
+            size[rootU] += size[rootV];
+        }
+    }
+}
